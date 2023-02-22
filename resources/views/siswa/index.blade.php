@@ -8,13 +8,9 @@
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
     </head>
     <body>
+        <br>
         <div class="container">
             <h1 class="mt-4 mb-4 text-center">Data Siswa</h1>
-            <div class="row mb-4">
-                <div class="col-md-12">
-                    <a href="{{ route('siswa.create') }}" class="btn btn-primary">Tambah Data</a>
-                </div>
-            </div>
             <div class="row">
                 <div class="col-md-12">
                     <table id="siswa-table" class="table table-striped table-bordered">
@@ -44,12 +40,6 @@
                                 <td>{{ $s->agama }}</td>
                                 <td>
                                     <a href="{{ route('siswa.show', $s->id) }}" class="btn btn-info btn-sm">Detail</a>
-                                    <a href="{{ route('siswa.edit', $s->id) }}" class="btn btn-warning btn-sm">Edit</a>
-                                    <form action="{{ route('siswa.destroy', $s->id) }}" method="POST" style="display:inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin ingin menghapus data ini?')">Hapus</button>
-                                    </form>
                                 </td>
                             </tr>
                             @endforeach

@@ -39,7 +39,8 @@ class SiswaController extends Controller
      */
     public function show(string $id): Response
     {
-        //
+        $siswa = Siswa::findOrFail($id);
+        return response(view('siswa.show', compact('siswa')));
     }
 
     /**
