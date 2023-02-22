@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PresensiController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,6 +17,7 @@ use App\Http\Controllers\SiswaController;
 
 // Route::get('/siswa', [SiswaController::class, 'index']);
 Route::resource('siswa', SiswaController::class);
+Route::resource('presensi', PresensiController::class);
 
 Route::get('/', function () {
     return view('welcome');

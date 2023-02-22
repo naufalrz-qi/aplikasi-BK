@@ -21,6 +21,8 @@ return new class extends Migration
 
         Schema::table('presensi', function (Blueprint $table) {
             $table->string('keterangan')->nullable();
+            $table->string('hadir',20);
+            $table->enum('hadir', ['HADIR', 'TIDAK'])->nullable(false)->default('TIDAK');
         });
     }
 
@@ -31,7 +33,7 @@ return new class extends Migration
     {
         Schema::dropIfExists('presensi');
         Schema::table('presensi', function (Blueprint $table) {
-            $table->dropColumn('keterangan');
+            $table->dropColumn('keterangan', 'hadir');
         });
     }
 };
