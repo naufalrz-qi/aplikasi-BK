@@ -26,7 +26,7 @@
                   <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Absensi</a>
+                  <a class="nav-link" href="/presensi">Presensi</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Kasus</a>

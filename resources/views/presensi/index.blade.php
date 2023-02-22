@@ -25,20 +25,20 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Tanggal</th>
                     <th>Siswa</th>
                     <th>Hadir</th>
                     <th>Waktu</th>
+                    <th>Keterangan</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($presensi as $presensi)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $presensi->tanggal }}</td>
                     <td>{{ $presensi->siswa->nama }}</td>
                     <td>{{ $presensi->hadir }}</td>
-                    <td>{{ $presensi->waktu }}</td>
+                    <td>{{ $presensi->created_at}}</td>
+                    <td>{{ $presensi->keterangan }}</td>
                 </tr>
                 @endforeach
             </tbody>

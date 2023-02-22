@@ -11,7 +11,7 @@
                         <form method="POST" action="{{ route('presensi.store') }}">
                             @csrf
 
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label for="siswa_id" class="col-md-4 col-form-label text-md-right">{{ __('Siswa') }}</label>
 
                                 <div class="col-md-6">
@@ -28,9 +28,60 @@
                                     </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="form-group row">
+
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Siswa</th>
+                                            <th>Hadir</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($siswa as $siswa)
+                                        <tr>
+                                            <td>{{ $siswa->id }}</td>
+                                            <td>
+                                                <div>
+                                                    <input id="siswa_id_{{ $siswa->id }}" name="siswa_id[]" type="checkbox" value="{{ $siswa->id }}" {{ is_array(old('siswa_id')) && in_array($siswa->id, old('siswa_id')) ? 'checked' : '' }}>
+                                                    <label for="siswa_id_{{ $siswa->id }}">{{ $siswa->nama }}</label>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="form-group row">
+                                                    <div>
+                                                        <select id="hadir_{{ $siswa->id }}" name="hadir[]" class="form-control @error('hadir') is-invalid @enderror">
+                                                            <option value="HADIR" {{ is_array(old('hadir')) && in_array('HADIR', old('hadir')) ? 'selected' : '' }}>HADIR</option>
+                                                            <option value="TIDAK" {{ is_array(old('hadir')) && in_array('TIDAK', old('hadir')) ? 'selected' : '' }}>TIDAK</option>
+                                                        </select>
+                                                        @error('hadir')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div>
+                                                    <input id="keterangan_{{ $siswa->id }}" type="text" class="form-control @error('keterangan') is-invalid @enderror" name="keterangan[]" value="{{ is_array(old('keterangan')) && isset(old('keterangan')[$loop->index]) ? old('keterangan')[$loop->index] : '' }}" required autocomplete="keterangan" autofocus>
+                                                    @error('keterangan')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                    @enderror
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                            {{-- <div class="form-group row">
                                 <label for="keterangan" class="col-md-4 col-form-label text-md-right">{{ __('Keterangan') }}</label>
 
                                 <div class="col-md-6">
@@ -42,13 +93,30 @@
                                     </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
-                            <div class="form-group row">
+                            {{-- <div class="form-group row">
                                 <label for="hadir" class="col-md-4 col-form-label text-md-right">{{ __('Hadir') }}</label>
 
                                 <div class="col-md-6">
                                     <select id="hadir" name="hadir" class="form-control @error('hadir') is-invalid @enderror">
+                                        <option value="HADIR" {{ old('hadir') == 'HADIR' ? 'selected' : '' }}>HADIR</option>
+                                        <option value="TIDAK" {{ old('hadir') == 'TIDAK' ? 'selected' : '' }}>TIDAK</option>
+                                    </select>
+                                    @error('hadir')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div> --}}
+
+                            {{-- <div class="form-group row">
+                                <label for="hadir" class="col-md-4 col-form-label text-md-right">{{ __('Hadir') }}</label>
+
+                                <div class="col-md-6">
+                                    <select id="hadir" name="hadir" class="form-control @error('hadir') is-invalid @enderror">
+                                        <option value="">-- Pilih --</option>
                                         <option value="HADIR" {{ old('hadir') == 'HADIR' ? 'selected' : '' }}>HADIR</option>
                                         <option value="TIDAK" {{ old('hadir') == 'TIDAK' ? 'selected' : '' }}>TIDAK</option>
                                     </select>
@@ -59,7 +127,7 @@
                                     </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">

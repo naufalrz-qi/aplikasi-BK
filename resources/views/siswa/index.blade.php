@@ -24,6 +24,7 @@
                                 <th>Email</th>
                                 <th>Telepon</th>
                                 <th>Agama</th>
+                                {{-- <th>Hadir</th> --}}
                                 <th>Aksi</th>
                             </tr>
                         </thead>
@@ -38,6 +39,18 @@
                                 <td>{{ $s->email }}</td>
                                 <td>{{ $s->telepon }}</td>
                                 <td>{{ $s->agama }}</td>
+                                {{-- <td><div class="form-group row">
+                                    <div class="col-md-6">
+                                        <div class="form-check form-switch">
+                                            <input class="form-check-input" type="checkbox" id="hadir" name="hadir" {{ old('hadir') ? 'checked' : '' }}>
+                                        </div>
+                                        @error('hadir')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div></td> --}}
                                 <td>
                                     <a href="{{ route('siswa.show', $s->id) }}" class="btn btn-info btn-sm">Detail</a>
                                 </td>
